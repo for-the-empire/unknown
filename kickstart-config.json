@@ -1,0 +1,17 @@
+{
+  "bootstrap": {
+    "cloud-deploy": "gcp",
+    "palo":{
+      "palo-admin-username": "admin",
+      "palo-admin-password-hash": "$1$ualouppn$z9XW2Z4Jv0xi5Y4RXLtFw0",
+      "palo-admin-password-hash": "",
+      "palo-bootstrap-config-location": "bucket",
+      "palo-bgp-as": "65335"
+    },
+    "kickstart-http-server":{
+      "http-auth-token": "11111",
+      "bird-bgp-as": "65334",
+      "bootstrap-peer-json": "TBD"
+    }
+  }
+}
