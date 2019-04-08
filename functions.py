@@ -1,7 +1,10 @@
 import http.server
+import json
+import xml.etree.ElementTree as ET
 
 ####Init Kickstart Function Section####
 ####Used to get IP of Palo Alto before Flask API is Started####
+###HTTP Simple Server###
 #Modify simple server python class to read headers and not respond with root directory contents
 class postHandler(http.server.SimpleHTTPRequestHandler):
     def do_POST(self):
@@ -51,11 +54,13 @@ def getAPICallerIP(server_class=http.server.HTTPServer,
     initBasicHTTPValues()
     serverAddress = ('', 80)
     httpd = server_class(serverAddress, handler_class)
-    print('before while statement')
 		##need to add a check for the Authd Token and maybe change it to Basic-Auth-Token header, but I am to tired to do a find and replace right now...
     while getHTTPHeaderDICT()["Authd"] == "False":
-        print('in while statement')
         httpd.handle_request()
     return getHTTPHeaderDICT()
 		#to use this in code: getSourceIP(getAPICallerIP())
 
+###Basic Functions
+def readJSONFile(location, filename):
+    with open(location + filename, 'r') as rawFileData:
+        return json.loads(rawFileData)
